@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+  <!-- DB 컬럼명 reg_date를 Java 필드 regDate로 자동 매핑 -->
+  <settings>
+    <setting name="mapUnderscoreToCamelCase" value="true"/>
+  </settings>
+
+  <!-- VO 클래스 이름을 XML에서 짧게 쓰기 위한 별칭 설정 -->
+  <typeAliases>
+    <typeAlias type="org.scoula.domain.MemberVO" alias="MemberVO"/>
+  </typeAliases>
+
+  <!-- DB 연결 정보 -->
+  <environments default="development">
+    <environment id="development">
+
+      <!-- JDBC 트랜잭션 사용 -->
+      <transactionManager type="JDBC"/>
+
+      <!-- MyBatis 기본 커넥션 풀 사용 -->
+      <dataSource type="POOLED">
+        <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/jdbc_ex?serverTimezone=Asia/Seoul&amp;characterEncoding=UTF-8"/>
+        <property name="username" value="root"/>
+        <property name="password" value="1234"/>
+      </dataSource>
+
+    </environment>
+  </environments>
+
+  <!-- Mapper XML 파일 등록 -->
+  <mappers>
+    <mapper resource="mapper/MemberMapper.xml"/>
+  </mappers>
+
+</configuration>
